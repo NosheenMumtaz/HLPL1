@@ -157,8 +157,8 @@ double term()
 // deal with + and -
 double expression()
 {
-    // term( change to term()
-    double left = term();      // read and evaluate a Term
+    // we change term( to term() in next line:
+    double left = term();     // read and evaluate a Term
     Token t = ts.get();        // get the next token from token stream
 
     while (true) {
@@ -199,9 +199,9 @@ int main()
         while (cin) {
             Token t = ts.get();
 
-            if (t.kind == 'x') 
-                break; // 'q' for quit CHANGED
-            if (t.kind == '=')        // ';' for "print now" CHANGED
+            if (t.kind == 'x')  // we change 'q' to 'x':
+                break;
+            if (t.kind == '=')        // we change ';' to '=':
                 cout << "=" << val << '\n';
             else
                 ts.putback(t);
