@@ -146,7 +146,7 @@ double primary()
 	case name:
 		return get_value(t.name);
 		   
-	case sqrtt:  //gave user sqrt function as asked in task 7
+	case sqrt:  //gave user sqrt function as asked in task 7
 	{
 		t = ts.get();
 		if (t.kind != '(')
@@ -161,9 +161,9 @@ double primary()
 		return sqrt(d);
 	}
 	
-	case poww :     //added this case to allow user pow function as asked in task 9
+	case pow:     //added this case to allow user pow function as asked in task 9
 	{
-		t = ts.get();//for (
+		t = ts.get();                 //for (
 		if (t.kind != '(')
 			error(" '(' was expected.");
 		double d = expression();     // for number
@@ -171,7 +171,7 @@ double primary()
 		 if (t.kind != ',')
 			 error(" ',' was expected.");
 		 double i = expression();    // for i
-		 t = ts.get();//for )
+		 t = ts.get();               //for )
 		 if (t.kind != ')')
 			 error(" ')' was expected.");
 
