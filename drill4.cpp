@@ -1,6 +1,6 @@
+                                                     //CHAPTER NO 10
+
 #include "std_lib_facilities.h"
-
-
 class Point
 {
 public :
