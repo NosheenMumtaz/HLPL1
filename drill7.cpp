@@ -1,5 +1,5 @@
                                                         //CHAPTER NO 9
-//Part 1 The version from 9.4.1
+                                               //Part 1 The version from 9.4.1
 
 
 #include "std_lib_facilities.h"
@@ -62,7 +62,7 @@ int main()
         return 0;
 }
 
-// Part 2 The version from 9.4.2
+                                                     // Part 2 The version from 9.4.2
 
 
 #include "std_lib_facilities.h"
@@ -129,7 +129,7 @@ int main()
         return 0;
 }
 
-//Part 3 The version from 9.4.3
+                                                         //Part 3 The version from 9.4.3
 
 #include "std_lib_facilities.h"
 using namespace std;
