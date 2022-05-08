@@ -1,3 +1,5 @@
+                                               //CHAPTER NO 7
+
 #include "std_lib_facilities.h"
 #define k 1000 //we defined value k which is 1000
 
