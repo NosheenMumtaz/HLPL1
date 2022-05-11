@@ -64,7 +64,7 @@ Token Token_stream ::  get()
 
     switch (ch) {
     case '=':    // we changed ';' to '=' for print 
-    case 'x':    // we changed 'q' to 'x' for print
+    case 'x':    // we changed 'q' to 'x' for quit
     case '(': case ')': case '+': case '-': case '*': case '/':case '%':// add remainder
         return Token(ch);        // let each character represent itself
     case '.':
