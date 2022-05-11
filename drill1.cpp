@@ -1,7 +1,6 @@
                                                           //CHAPTER NO 6
+#include "std_lib_facilities.h"
 
-#include <iostream>
-using namespace std;
 //------------------------------------------------------------------------------
 
 // Logical error no 1: lass changed to class:
@@ -41,7 +40,7 @@ Token_stream::Token_stream()
 void Token_stream::putback(Token t)
 {
     
-    if (full) perror("putback() into a full buffer");
+    if (full) error("putback() into a full buffer");
     buffer = t;       // copy t to buffer
     full = true;      // buffer is now full
 }
@@ -53,7 +52,6 @@ void Token_stream::putback(Token t)
 */
 Token Token_stream ::  get()
 {
-    {
     
     if (full) {       // do we already have a Token ready?
         // remove token from buffer
@@ -79,11 +77,10 @@ Token Token_stream ::  get()
         return Token('8', val);   // let '8' represent "a number"
     }
     default:
-        perror("Bad token");
+        error("Bad token");
     }
 }
-    return 0;
-}
+
 //------------------------------------------------------------------------------
 
 Token_stream ts;        // provides get() and putback() 
@@ -97,7 +94,6 @@ double expression();    // declaration so that primary() can call expression()
 // deal with numbers and parentheses
 double primary()
 {
-    {
     Token t = ts.get();
     switch (t.kind) {
     case '(':    // handle '(' expression ')'
@@ -105,17 +101,16 @@ double primary()
         double d = expression();
         t = ts.get();
         // " is missing here so it gives error
-        if (t.kind != ')') perror("')' expected");
+        if (t.kind != ')') error("')' expected");
             return d;
     }
     case '8':            // we use '8' to represent a number
         return t.value;  // return the number's value
     default:
-        perror("primary expected");
+        error("primary expected");
     }
 }
-    return 0;
-}
+
 //------------------------------------------------------------------------------
 
 // deal with *, /, and %
@@ -137,8 +132,16 @@ double term()
         case '/':
         {
             double d = primary();
-            if (d == 0) perror("divide by zero");
+            if (d == 0) error("divide by zero");
             left /= d;
+            t = ts.get();
+            break;
+        }
+        case '%':
+        {
+            double d = primary();
+            if (d == 0) error("Do not even try diving by zero !");
+            left = remainder(left,d);
             t = ts.get();
             break;
         }
@@ -200,22 +203,21 @@ int main()
             if (t.kind == 'x')  // we change 'q' to 'x':
                 break;
             if (t.kind == '=')        // we change ';' to '=':
-                cout << "" << val << '\n';
+                cout << "=" << val << '\n';
             else
                 ts.putback(t);
             val = expression();
         }
-       
+        keep_window_open();
     }
     catch (exception& e) {
         cerr << "error: " << e.what() << '\n';
-        
+        keep_window_open();
         return 1;
     }
     catch (...) {
         cerr << "Oops: unknown exception!\n";
-       
+        keep_window_open();
         return 2;
     }
-}
-//------------------------------------------------------------------------------
+}-----------------------------------------------------------------------------
